@@ -1,5 +1,5 @@
 {
-	"main": "build/temp/main.js",
+	"main": "build/main.js",
 	"scripts": {
 		"start": "node_modules\\electron\\dist\\electron.exe ."
 	},

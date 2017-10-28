@@ -14,19 +14,6 @@
 			"group": "build"
 		},
 		{
-			"taskName": "watchify",
-			"command": "watchify",
-			"args": [
-				"build/temp/main.js",
-				"-o",
-				"build/bundle.js",
-				"-v"
-			],
-			"type": "shell",
-			"group": "build",
-			"problemMatcher": []
-		},
-		{
 			"taskName": "mocha",
 			"command": "mocha",
 			"args": [
