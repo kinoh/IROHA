@@ -1,0 +1,45 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "tsc-watch",
+			"type": "typescript",
+			"tsconfig": "tsconfig.json",
+			"option": "watch",
+			"problemMatcher": [
+				"$tsc-watch"
+			],
+			"group": "build"
+		},
+		{
+			"taskName": "watchify",
+			"command": "watchify",
+			"args": [
+				"build/temp/main.js",
+				"-o",
+				"build/bundle.js",
+				"-v"
+			],
+			"type": "shell",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"taskName": "mocha",
+			"command": "mocha",
+			"args": [
+				"--require",
+				"espower-typescript/guess",
+				"test/**/*.test.ts"
+			],
+			"type": "shell",
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		}
+	]
+}
