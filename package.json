@@ -1,5 +1,8 @@
 {
 	"main": "build/temp/main.js",
+	"scripts": {
+		"start": "node_modules\\electron\\dist\\electron.exe ."
+	},
 	"devDependencies": {
 		"@types/mocha": "^2.2.43",
 		"@types/power-assert": "^1.4.29",

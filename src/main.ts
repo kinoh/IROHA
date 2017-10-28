@@ -1,6 +1,4 @@
-import { Hoge } from "./hoge";
+import Electron = require("electron");
+import { Application } from "./application";
 
-document.addEventListener("DOMContentLoaded", () => {
-	var hoge = new Hoge();
-	alert(hoge.double(123));
-});
+const app = new Application(Electron.app);
