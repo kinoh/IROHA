@@ -18,7 +18,10 @@ export class Balloon {
 		this.canvas.style.top = "0";
 
 		this.adjustSize();
-		window.addEventListener("resize", this.adjustSize);
+		window.addEventListener("resize", () => {
+			this.adjustSize();
+			this.draw();
+		});
 
 		this.context = canvas.getContext("2d");
 		this.text = text;
