@@ -2,4 +2,4 @@
 
 ## Requirements
 
-Execute `npm install -g typescript watchify mocha`.
+Execute `npm install -g typescript watchify mocha`, `npm install` and `cp index.* build/` (oops!).
