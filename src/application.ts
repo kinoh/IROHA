@@ -8,7 +8,7 @@ export class Application {
 	}
 
 	public onReady(): void {
-		const size = { width: 300, height: 300 };
+		const size = { width: 300, height: 450 };
 
 		this.window = new Electron.BrowserWindow({
 			width: size.width,
