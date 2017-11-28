@@ -32,9 +32,9 @@ impl Graph {
         let mut nodes = vec![];
         let mut edges = vec![];
 
-        let mut count = mind.notions.len();
+        let mut count = mind.concepts.len();
 
-        for n in &mind.notions {
+        for n in &mind.concepts {
             nodes.push((n.id, None));
 
             match *n.scheme() {

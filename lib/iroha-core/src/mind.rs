@@ -67,7 +67,7 @@ impl<'a> Eq for ConceptData<'a> {}
 
 pub struct Mind<'a> {
     arena: &'a Arena<ConceptData<'a>>,
-    pub notions: Vec<Concept<'a>>,
+    pub concepts: Vec<Concept<'a>>,
     activator: HashMap<String, Concept<'a>>,
     conscious: VecDeque<Concept<'a>>
 }
@@ -76,37 +76,37 @@ impl<'a> Mind<'a> {
     pub fn new(arena: &'a Arena<ConceptData<'a>>) -> Mind<'a> {
         Mind {
             arena: arena,
-            notions: vec![],
+            concepts: vec![],
             activator: HashMap::new(),
             conscious: VecDeque::new()
         }
     }
 
     pub fn know(&mut self) -> Concept<'a> {
-        let notion = self.arena.alloc(ConceptData::new(self.notions.len()));
-        self.notions.push(notion);
-        notion
+        let concept = self.arena.alloc(ConceptData::new(self.concepts.len()));
+        self.concepts.push(concept);
+        concept
     }
 
-    pub fn know_child(&mut self, notion: Concept<'a>) -> Concept<'a> {
+    pub fn know_child(&mut self, concept: Concept<'a>) -> Concept<'a> {
         let child = self.know();
-        child.parent.replace(Some(notion));
-        notion.children.borrow_mut().push(child);
+        child.parent.replace(Some(concept));
+        concept.children.borrow_mut().push(child);
         child
     }
 
-    pub fn define_as(&self, notion: Concept<'a>, scheme: Concept<'a>) {
-        notion.scheme.replace(Some(scheme));
+    pub fn define_as(&self, concept: Concept<'a>, scheme: Concept<'a>) {
+        concept.scheme.replace(Some(scheme));
     }
 
-    pub fn elaborate(&mut self, notion: Concept<'a>) -> Concept<'a> {
+    pub fn elaborate(&mut self, concept: Concept<'a>) -> Concept<'a> {
         let elaboration = self.know();
-        elaboration.scheme.replace(Some(notion));
+        elaboration.scheme.replace(Some(concept));
         elaboration
     }
 
-    pub fn ground(&mut self, notion: Concept<'a>, key: String) {
-        self.activator.insert(key, notion);
+    pub fn ground(&mut self, concept: Concept<'a>, key: String) {
+        self.activator.insert(key, concept);
     }
 
     pub fn receive(&mut self, word: String) {
@@ -122,10 +122,10 @@ impl<'a> Mind<'a> {
         }
     }
 
-    pub fn collect_activators(&self, notion: Concept<'a>) -> Vec<String> {
+    pub fn collect_activators(&self, concept: Concept<'a>) -> Vec<String> {
         let mut res = vec![];
         for (a, n) in self.activator.iter() {
-            if *n == notion {
+            if *n == concept {
                 res.push(a.clone());
             }
         }
